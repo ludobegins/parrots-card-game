@@ -44,7 +44,7 @@ function comparador() {
 }
 
 function turnCard(el){
-    console.log(viradas_temp);
+    el.classList.add('card-turn');
 
     back_img = el.querySelector(".back-img");
     back_img.classList.add("hidden");
@@ -53,36 +53,28 @@ function turnCard(el){
 
     viradas_temp.push(el);
     if (viradas_temp.length === 2){
-        console.log('viradas 0', viradas_temp[0].querySelector('.front-img').classList[1]);
-        console.log('viradas 1',viradas_temp[1].querySelector('.front-img').classList[1]);
-        console.log('iguais',viradas_temp[0].querySelector('.front-img').classList[1] == viradas_temp[1].querySelector('.front-img').classList[1]);
         if (viradas_temp[0].querySelector('.front-img').classList[1] == viradas_temp[1].querySelector('.front-img').classList[1]){
-            console.log('IGUAIS MANE');
             viradas_def.push(viradas_temp[0]);
             viradas_def.push(viradas_temp[1]);
             viradas_temp = [];
         } else {
-            console.log(front_img.classList);
-            console.log(back_img.classList);
             setTimeout(() => {
                 front_img.classList.add("hidden");
                 back_img.classList.remove("hidden");
-                console.log('viradas_tempo', viradas_temp);
                 viradas_temp[0].querySelector('.front-img').classList.add('hidden');
                 viradas_temp[0].querySelector('.back-img').classList.remove('hidden');
+                viradas_temp[0].classList.remove('card-turn');
                 viradas_temp = [];
-                console.log("Espera 1 segundo");
+                el.classList.remove('card-turn');
               }, 1000);
         }
     }
 
-    console.log(viradas_temp);
     jogadas++;
 
     if(viradas_def.length === n_cartas){
         setTimeout(() => {
             alert(`Você ganhou em ${jogadas} jogadas!`);
-            console.log("Espera 2 segundos");
           }, 2000);
     }
 
