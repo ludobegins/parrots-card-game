@@ -30,8 +30,18 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.card img {
+.back-img {
     width: 100px;
+}
+
+.front-img {
+    width: 80px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
 }
