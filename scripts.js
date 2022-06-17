@@ -3,6 +3,7 @@ let viradas_temp = [];
 let viradas_def = [];
 let back_img;
 let front_img;
+let jogadas = 0;
 
 while (((n_cartas % 2 == 0) && (typeof(n_cartas) == 'number') && (n_cartas >= 4) && (n_cartas <= 14)) == false){
     n_cartas = prompt('Com quantas cartas quer jogar? (números pares de 4 a 14)');
@@ -70,12 +71,20 @@ function turnCard(el){
                 viradas_temp[0].querySelector('.front-img').classList.add('hidden');
                 viradas_temp[0].querySelector('.back-img').classList.remove('hidden');
                 viradas_temp = [];
-                console.log("Espera 2 segundo");
-              }, 2000);
+                console.log("Espera 1 segundo");
+              }, 1000);
         }
     }
 
     console.log(viradas_temp);
+    jogadas++;
+
+    if(viradas_def.length === n_cartas){
+        setTimeout(() => {
+            alert(`Você ganhou em ${jogadas} jogadas!`);
+            console.log("Espera 2 segundos");
+          }, 2000);
+    }
 
 
 }
